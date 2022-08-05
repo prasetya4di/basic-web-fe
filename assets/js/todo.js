@@ -16,6 +16,10 @@ let currentId = 1;
       $("#name").val(mTodo.name)
       $("#todoDate").val(mTodo.date)
       $("#description").val(mTodo.description)
+    } else {
+      $("#name").val(null)
+      $("#todoDate").val(null)
+      $("#description").val(null)
     }
   })
   $("#btnSave").on("click", function () {
@@ -35,8 +39,13 @@ function saveTodo() {
       date: date,
       description: description
     })
-    clickedId == null ? currentId++ : clickedId = null
-    updateTodoList(todo.get(todoId))
+    if (clickedId == null) {
+      currentId++
+      newTodoCard(todo.get(todoId))
+    } else {
+      clickedId = null
+      updateTodoCard(todo.get(todoId))
+    }
     $("#todoModal").modal('toggle')
   }
 }
@@ -62,14 +71,14 @@ function validateForm() {
   return isValid
 }
 
-function updateTodoList(todo) {
+function newTodoCard(todo) {
   let idTodo = todo.id
   let todoCard = "<div class=\"col-3\" id=\"" + idTodo + "\">\n" +
       "            <div class=\"card\">\n" +
-      "                <div class=\"card-body\">\n" +
+      "                <div class=\"card-body\" id=\"card-" + idTodo + "\">\n" +
       "                    <h5 class=\"card-title\" id=\"title-" + idTodo + "\">" + todo.name + "</h5>\n" +
       "                    <h6 class=\"card-subtitle mb-2 text-muted\" id=\"date-" + idTodo + "\">" + todo.date + "</h6>\n" +
-      "                    <p class=\"card-text\" id=\"" + idTodo + "\">" + todo.description + "</p>\n" +
+      "                    <p class=\"card-text\" id=\"description-" + idTodo + "\">" + todo.description + "</p>\n" +
       "                    <div class=\"hstack gap-1\">\n" +
       "                        <button class=\"btn btn-success col-6\" type=\"button\" data-bs-target=\"#todoModal\" data-bs-toggle=\"modal\" data-bs-whatever=\"" + idTodo + "\">\n" +
       "                            <i aria-hidden=\"true\" class=\"fa fa-pencil\"></i> Edit\n" +
@@ -82,4 +91,11 @@ function updateTodoList(todo) {
       "            </div>\n" +
       "        </div>"
   $("#listTodo").append(todoCard)
+}
+
+function updateTodoCard(todo) {
+  let idTodo = todo.id
+  $("#title-" + idTodo).text(todo.name)
+  $("#date-" + idTodo).text(todo.date)
+  $("#description-" + idTodo).text(todo.description)
 }
