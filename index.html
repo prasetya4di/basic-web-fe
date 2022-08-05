@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>My Todo</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -25,12 +25,15 @@
                     <h5 class="card-title">Todo Name</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Due Date</h6>
                     <p class="card-text">Description</p>
-                    <button class="btn btn-success col-12" type="button"><i aria-hidden="true" class="fa fa-pencil"></i>
-                        Edit
-                    </button>
-                    <button class="btn btn-danger mt-2 col-12" type="button">
-                        <i aria-hidden="true" class="fa fa-trash"></i> Delete
-                    </button>
+                    <div class="hstack gap-1">
+                        <button class="btn btn-success col-6" type="button"><i aria-hidden="true"
+                                                                               class="fa fa-pencil"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-danger col-6" type="button">
+                            <i aria-hidden="true" class="fa fa-trash"></i> Delete
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,49 +43,54 @@
 <!-- Modal -->
 <div aria-hidden="true" aria-labelledby="todoModalLabel" class="modal fade" id="todoModal" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="todoModalLabel">Add Todo</h5>
-                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" id="name" placeholder="Todo Name" type="text">
-                    <div class="valid-feedback">
-                        Looks good!
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="todoModalLabel">Add Todo</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Name</label>
+                        <input class="form-control" id="name" placeholder="Todo Name" required type="text">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a name.
+                        </div>
                     </div>
-                    <div class="invalid-feedback">
-                        Please provide a name.
+                    <div class="mb-3">
+                        <label class="form-label" for="todoDate">Date</label>
+                        <input class="form-control" id="todoDate" placeholder="2022-12-31" required type="date">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid date.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" id="description" required rows="3"></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a description.
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="todoDate">Date</label>
-                    <input class="form-control" id="todoDate" placeholder="2022-12-31" type="date">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please provide a valid date.
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" id="description" rows="3"></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please provide a description.
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
-                <button class="btn btn-primary" type="button">Save</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
+
+<!-- Validation Javascript -->
+<script src="assets/js/validation.js"></script>
 </body>
 </html>
