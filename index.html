@@ -12,14 +12,11 @@
 <div class="container">
     <h1>My Todo</h1>
     <hr/>
-    <div class="row">
-        <div class="col">
-            <h4>Pras's Todo</h4>
-        </div>
-        <div class="col text-end">
-            <button class="btn btn-primary" type="button"><i aria-hidden="true" class="fa fa-plus"></i> Add Todo
-            </button>
-        </div>
+    <div class="clearfix">
+        <h4 class="float-start">Pras's Todo</h4>
+        <button class="btn btn-primary float-end" data-bs-target="#todoModal" data-bs-toggle="modal" type="button">
+            <i aria-hidden="true" class="fa fa-plus"></i> Add Todo
+        </button>
     </div>
     <div class="row justify-content-evenly g-4 py-3">
         <div class="col-3">
@@ -35,6 +32,54 @@
                         <i aria-hidden="true" class="fa fa-trash"></i> Delete
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="todoModalLabel" class="modal fade" id="todoModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="todoModalLabel">Add Todo</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" id="name" placeholder="Todo Name" type="text">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="todoDate">Date</label>
+                    <input class="form-control" id="todoDate" placeholder="2022-12-31" type="date">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid date.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-primary" type="button">Save</button>
             </div>
         </div>
     </div>
