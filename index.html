@@ -73,6 +73,27 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="deleteTodoModalLabel" class="modal fade" id="deleteTodoModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteTodoModalLabel">Confirm Delete</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="deleteMessage">Are you sure ?</h2>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn btn-primary" id="btnDelete" type="button">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- Validation Javascript -->
 <script src="assets/js/todo.js"></script>
 </body>

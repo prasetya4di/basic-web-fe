@@ -4,6 +4,13 @@ let currentId = 1;
 
 (() => {
   let todoFormModal = document.getElementById("todoModal")
+  let confirmDeleteModal = document.getElementById("deleteTodoModal")
+
+  confirmDeleteModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget
+    const idTodo = button.getAttribute('data-bs-whatever')
+    clickedId = idTodo
+  })
 
   todoFormModal.addEventListener('show.bs.modal', event => {
     // Button that triggered the modal
@@ -24,6 +31,9 @@ let currentId = 1;
   })
   $("#btnSave").on("click", function () {
     saveTodo();
+  })
+  $("#btnDelete").on("click", function () {
+    deleteTodo();
   })
 })()
 
@@ -83,7 +93,7 @@ function newTodoCard(todo) {
       "                        <button class=\"btn btn-success col-6\" type=\"button\" data-bs-target=\"#todoModal\" data-bs-toggle=\"modal\" data-bs-whatever=\"" + idTodo + "\">\n" +
       "                            <i aria-hidden=\"true\" class=\"fa fa-pencil\"></i> Edit\n" +
       "                        </button>\n" +
-      "                        <button class=\"btn btn-danger col-6\" type=\"button\" data-bs-target=\"#todoModal\" data-bs-toggle=\"modal\">\n" +
+      "                        <button class=\"btn btn-danger col-6\" type=\"button\" data-bs-target=\"#deleteTodoModal\" data-bs-toggle=\"modal\">\n" +
       "                            <i aria-hidden=\"true\" class=\"fa fa-trash\"></i> Delete\n" +
       "                        </button>\n" +
       "                    </div>\n" +
@@ -98,4 +108,10 @@ function updateTodoCard(todo) {
   $("#title-" + idTodo).text(todo.name)
   $("#date-" + idTodo).text(todo.date)
   $("#description-" + idTodo).text(todo.description)
+}
+
+function deleteTodo(id) {
+  todo.delete(id)
+  clickedId = null
+  $("#deleteTodoModal").modal('toggle')
 }
