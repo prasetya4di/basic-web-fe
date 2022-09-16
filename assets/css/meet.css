@@ -1,0 +1,27 @@
+.circle-name {
+  height: 75px;
+  width: 75px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.video-container {
+  max-height: 100% !important;
+}
+
+.video-content {
+  height: 90% !important;
+}
+
+.video-control {
+  height: 10%
+}
+
+#chat-container {
+  height: 98% !important;
+}
+
+.mh-65 {
+  height: 65% !important;
+}
